@@ -1,0 +1,3 @@
+/home/systemdr21/git/cuda/lesson-1.1-pointers-references-memory-addresses/build/CMakeFiles/pointers_intro.dir
+/home/systemdr21/git/cuda/lesson-1.1-pointers-references-memory-addresses/build/CMakeFiles/edit_cache.dir
+/home/systemdr21/git/cuda/lesson-1.1-pointers-references-memory-addresses/build/CMakeFiles/rebuild_cache.dir

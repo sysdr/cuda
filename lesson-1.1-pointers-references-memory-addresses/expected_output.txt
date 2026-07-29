@@ -1,0 +1,31 @@
+Part 1: host variable
+  x itself:        42
+  address of x:    <!-- MEASURED: host addresses are randomized per run (ASLR); paste a real example run -->
+  host_ptr holds:  <!-- MEASURED -->
+  *host_ptr:       42
+
+Part 2: pointer arithmetic on a 5-int host array
+  host_array[0] at <!-- MEASURED --> = 10
+  host_array[1] at <!-- MEASURED --> = 20
+  host_array[2] at <!-- MEASURED --> = 30
+  host_array[3] at <!-- MEASURED --> = 40
+  host_array[4] at <!-- MEASURED --> = 50
+  each step is 4 bytes apart (sizeof(int))
+
+Part 3: a device pointer looks the same as a host pointer
+  host_ptr    (host memory)   = <!-- MEASURED -->
+  device_ptr  (device memory) = <!-- MEASURED -->
+  nothing about the number itself tells you which is which
+
+Part 4: asking CUDA directly what kind of pointer each one is
+  host_ptr   -> cudaPointerGetAttributes returned an error (invalid argument)
+               that error IS the answer: this pointer was never registered with CUDA
+  device_ptr -> cudaMemoryType = 2 (0=unregistered,1=host,2=device,3=managed)
+
+Part 5: round-trip host -> device -> host
+  result_array[0] = 10
+  result_array[1] = 20
+  result_array[2] = 30
+  result_array[3] = 40
+  result_array[4] = 50
+Verification: round_trip_matches_original = PASS
