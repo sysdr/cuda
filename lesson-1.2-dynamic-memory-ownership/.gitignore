@@ -1,0 +1,44 @@
+# CMake / CUDA build output (recreate with: cmake -S . -B build)
+build/
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+
+# Istio / service mesh
+istio*/
+**/istio-*/
+*.istio.yaml
+istio-*.yaml
+
+# Secrets / credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/

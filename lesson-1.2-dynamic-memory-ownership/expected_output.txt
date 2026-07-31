@@ -1,0 +1,25 @@
+Part 1: malloc/free ownership
+  allocations outstanding: 0
+  Verification: malloc_free_balanced = PASS
+
+Part 2: new/delete vs malloc/free
+ malloc'd memory does not run a constructor:
+  raw->id happens to be: <!-- MEASURED: uninitialized value, will vary --> (uninitialized, do not rely on this)
+ new/delete do both, automatically:
+  Loud(1) constructed
+  proper->id is: 1
+  Loud(1) destroyed
+
+Part 3: array new/delete must be paired with []
+  arr[9] = 81
+  deleted with delete[], correctly paired
+
+Part 4: cudaMalloc/cudaFree is a different allocator entirely
+  device_ptr allocated via cudaMalloc: <!-- MEASURED -->
+  freed via cudaFree -- matching allocator, as it must be
+
+Part 5: RAII device buffer -- ownership tied to object lifetime
+  live DeviceBuffer objects before scope: 0
+  live DeviceBuffer objects inside scope: 1
+  live DeviceBuffer objects after scope: 0
+  Verification: raii_cleanup_ran = PASS
