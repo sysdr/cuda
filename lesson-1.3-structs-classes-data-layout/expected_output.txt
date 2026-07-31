@@ -1,0 +1,27 @@
+Part 1: NaiveParticle -- fields in declaration order
+  sizeof(NaiveParticle) = 24 bytes
+  offsetof flag   = 0
+  offsetof mass   = 8
+  offsetof active = 16
+  offsetof id     = 20
+  actual data: 1 + 8 + 1 + 4 = 14 bytes. padding: 10 bytes wasted.
+
+Part 2: PackedParticle -- same fields, reordered
+  sizeof(PackedParticle) = 16 bytes
+  offsetof mass   = 0
+  offsetof id     = 8
+  offsetof flag   = 12
+  offsetof active = 13
+  actual data: 8 + 4 + 1 + 1 = 14 bytes. padding: 2 bytes wasted.
+
+Part 3: alignas(16) on a struct that would naturally be 16 anyway
+  sizeof(Vec4Aligned)  = 16 bytes
+  alignof(Vec4Aligned) = 16 bytes
+
+Part 4: what reordering actually bought us
+  8 bytes saved per element just from field order
+  for an array of 1,000,000 particles: 7.63 MB saved
+
+Verification: the three static_assert checks above already ran
+  at compile time. this program would not exist as a binary
+  if any of them had failed. Verification: layout_assumptions = PASS
