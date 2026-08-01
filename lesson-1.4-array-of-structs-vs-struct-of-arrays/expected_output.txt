@@ -1,0 +1,17 @@
+GPU free memory: 4812.3 MB / 6144.0 MB total
+AoS layout: 53.4 MB for 2000000 particles
+SoA layout: 53.4 MB for 2000000 particles (same data)
+
+Part 3: updating x += vx * dt for every particle, 50 steps, 20 trials
+  AoS median time: <!-- MEASURED: run in Release mode, paste real ms --> ms
+  SoA median time: <!-- MEASURED --> ms
+  SoA speedup: <!-- MEASURED -->x
+
+Part 4: correctness check -- same math, different layout
+  max_diff between AoS.x and SoA.x = 0.00000000
+  Verification: aos_soa_results_match = PASS
+
+Part 5: device allocation shape (no kernel launch yet)
+  AoS: 1 cudaMalloc call for the whole array
+  SoA: 7 separate cudaMalloc calls, one per field
+  same total bytes either way, different bookkeeping
