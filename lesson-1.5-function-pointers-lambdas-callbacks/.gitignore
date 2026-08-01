@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.eggs/
+dist/
+*.egg
+
+# Istio / service mesh
+istio-*/
+istioctl
+*.istio.yaml
+*istio*.yaml
+.istio/
+
+# Secrets / env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials.json
+**/api_keys*
+**/apikey*
+
+# Build / CMake / CUDA
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.exe
+*.out
+*.cubin
+*.fatbin
+*.ptx
+*.sass
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs / temp
+*.log
+tmp/
+temp/
+.cache/

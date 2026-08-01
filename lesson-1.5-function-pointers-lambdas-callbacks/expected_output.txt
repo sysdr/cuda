@@ -1,0 +1,18 @@
+Part 1: function pointer dispatch
+  op = add,      apply(op, 3, 4) = 7
+  op = multiply, apply(op, 3, 4) = 12
+
+Part 2: lambdas and function pointer convertibility
+  non-capturing lambda converted to BinaryOp: apply = 7
+  capturing lambda (offset=100) called directly: 107
+  capturing lambdas cannot become a plain BinaryOp -- no place for 'offset' to live
+
+Part 3: passing different callable kinds to the same function
+  non-capturing lambda callback saw result = 42
+  capturing lambda callback saw result = 42 (multiplier was 3)
+
+Part 4: cudaLaunchHostFunc -- host callback tied to stream completion
+  work queued on the stream, callback_ran = false (before sync)
+  [host_callback running] stream work finished, this runs on a CUDA-managed thread
+  after cudaStreamSynchronize, callback_ran = true
+  Verification: host_callback_executed = PASS
