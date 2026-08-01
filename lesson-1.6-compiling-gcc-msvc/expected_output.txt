@@ -1,0 +1,14 @@
+Part 1: was this file actually compiled by nvcc?
+  __NVCC__ is defined -- yes, nvcc processed this file
+  CUDA compiler version this file was built with: <!-- MEASURED: e.g. 13.3 -->
+
+Part 2: which host compiler did nvcc hand this file's host code to?
+  <!-- MEASURED: e.g. "GCC, version 11.4" on Ubuntu/WSL2, or "MSVC (cl.exe), _MSC_VER = 1939" on Windows -->
+  nvcc itself never compiles this half of the file. it splits
+  the translation unit and delegates the host portion entirely.
+
+Part 3: which C++ standard was actually active while compiling
+  __cplusplus = 201703L
+  that's C++17 or newer, matching CMAKE_CXX_STANDARD 17
+
+Verification: cpp17_correctly_reported = PASS
