@@ -1,0 +1,22 @@
+Part 1: dot product of two 3D vectors
+  a = (1.0, 2.0, 3.0)
+  b = (4.0, 5.0, 6.0)
+  dot(a, b) = 1*4 + 2*5 + 3*6 = 32.0
+
+Part 2: two properties every dot product implementation should satisfy
+  perpendicular vectors: dot((1,0,0), (0,1,0)) = 0.0000
+  dot(v, v) = 25.0000, magnitude(v)^2 = 25.0000
+  Verification: perpendicular_vectors_dot_to_zero = PASS
+  Verification: self_dot_equals_magnitude_squared = PASS
+
+Part 3: the N-dimensional case -- what matmul actually calls
+  dot_n({1,2,3}, {4,5,6}) = 32.0
+  Verification: matches_hand_calculation = PASS
+
+Part 4: this is not a new idea -- you already used it
+  lesson 7.5's matmul_tiled_kernel computes exactly this, once per
+  output element: C[row][col] = dot_n(row_of_A, col_of_B). every
+  multiply-add in that kernel's inner loop was a dot product,
+  computed one term at a time instead of in a single function call.
+
+Verification: all_checks = PASS
