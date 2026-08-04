@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+venv/
+.venv/
+env/
+.env/
+*.egg-info/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials.json
+**/api_keys*
+**/*api*key*
+
+# Istio / service mesh
+istio-*/
+**/istio/
+**/istio-*.yaml
+**/istio-*.yml
+*.istio.yaml
+*.istio.yml
+
+# Build / CUDA — local CMake output; not needed for git check-in (rebuild with cmake)
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+*.o
+*.obj
+*.a
+*.so
+*.exe
+*.out
+*.cubin
+*.fatbin
+*.ptx
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Logs / temp
+*.log
+tmp/
+temp/
+.cache/
+
+# Docker
+*.tar

@@ -1,0 +1,29 @@
+Part 1: row-major vs column-major indexing for a 3x3 matrix
+  logical position (row=1, col=2):
+    row-major index   = 5
+    column-major index = 7
+
+Part 3: transpose(transpose(M)) should equal M
+  M   = [1,2,3, 4,5,6, 7,8,9]
+  Mt  = [1,4,7, 2,5,8, 3,6,9]
+  Verification: double_transpose_equals_original = PASS
+
+Part 4: strided_index reproduces both layouts
+  strided_index(1,2, row_stride=3, col_stride=1) = 5 (row-major form)
+  strided_index(1,2, row_stride=1, col_stride=3) = 7 (column-major form)
+  Verification: stride_formula_matches_both_layouts = PASS
+
+Part 5: naive B access (stride n) vs transposed B access (stride 1), N=256
+  naive (stride n) median:       <!-- MEASURED: run in Release mode --> ms
+  transposed (stride 1) median:  <!-- MEASURED --> ms
+  speedup: <!-- MEASURED -->x
+  max_diff between results: 0.00012207
+  Verification: results_match = PASS
+
+Part 6: this is lesson 2.2's exercise, answered
+  transposing B costs one O(N^2) pass up front, then every
+  read inside the O(N^3) inner loop becomes contiguous instead
+  of jumping n floats at a time. the layout of the data changed,
+  not the math -- results_match confirms that directly.
+
+Verification: all_checks = PASS
