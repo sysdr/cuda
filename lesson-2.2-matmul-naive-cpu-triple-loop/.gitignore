@@ -1,0 +1,62 @@
+# Build artifacts (regenerate with cmake -S . -B build)
+build/
+cmake-build-*/
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dylib
+
+# CUDA / nvcc
+*.cubin
+*.fatbin
+*.ptx
+*.i
+*.ii
+
+# Python / tooling (if added later)
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Istio / k8s local clutter
+istio/
+istio-*/
+*.kubeconfig
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials.json
+**/api_keys*
+**/apikey*
