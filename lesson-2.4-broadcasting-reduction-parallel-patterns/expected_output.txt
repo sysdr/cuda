@@ -1,0 +1,31 @@
+Part 1: broadcasting a scalar across a vector
+  v = [1,2,3,4,5], v + 10 = [11,12,13,14,15]
+
+Part 2: broadcasting a row vector across every row of a matrix
+  M = [[1,2,3],[4,5,6]], bias = [10,20,30]
+  M + bias = [[11,22,33],[14,25,36]]
+
+  Verification: broadcast_row_correct = PASS
+
+Part 3: reduction -- sum and max of the same data
+  data = [3,1,4,1,5,9,2,6]
+  reduce_sum(data) = 31.0 (hand check: 3+1+4+1+5+9+2+6 = 31)
+  reduce_max(data) = 9.0
+
+  Verification: reduce_sum_and_max_correct = PASS
+
+Part 4: elementwise multiply + reduce_sum should equal lesson 2.1's dot_n
+  dot_n(a, b) = 32.0
+  reduce_sum(a .* b) = 32.0
+  Verification: reduce_equals_dot_product = PASS
+
+Part 5: does the order you add numbers in change the answer?
+  forward order:  3.600000
+  reverse order:  3.600000
+  tree order:     3.600000
+  max spread between orderings: 0.00000000
+  Verification: summation_order_within_tolerance = PASS
+  (not bit-identical -- floating point addition is not strictly
+  associative. close enough here, but see the lesson text.)
+
+Verification: all_checks = PASS
