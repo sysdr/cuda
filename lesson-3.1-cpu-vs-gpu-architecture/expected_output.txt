@@ -1,0 +1,27 @@
+Part 1: your actual GPU, queried directly
+  name:                 <!-- MEASURED: e.g. NVIDIA GeForce RTX 3050 -->
+  compute capability:   8.6
+  SM count:              <!-- MEASURED: varies by exact card/variant -->
+  cores per SM:         128 (architecture-specific, not derived from cc alone)
+  total CUDA cores:     <!-- MEASURED: SM count x 128 -->
+
+Part 2: clock and memory
+  GPU clock:            <!-- MEASURED --> GHz
+  memory clock:         <!-- MEASURED --> GHz
+  memory bus width:     96 bits
+  theoretical peak bandwidth: <!-- MEASURED --> GB/s (2 x memClock x busWidth/8;
+                               real achieved bandwidth is typically lower)
+  total global memory:  <!-- MEASURED: approx 6.0 --> GB
+
+Part 3: per-SM limits (why occupancy numbers are what they are)
+  warp size:                    32
+  max threads per SM:           1536
+  max threads per block:        1024
+  shared memory per block:      <!-- MEASURED: typically 49152 --> bytes (48.0 KB)
+  L2 cache size:                <!-- MEASURED --> MB
+
+Verification: warp_size_is_32 = PASS
+Verification: sm_count_positive = PASS
+Verification: sm_86_max_threads_per_sm_is_1536 = PASS
+
+Verification: all_checks = PASS
