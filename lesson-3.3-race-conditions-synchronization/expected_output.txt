@@ -1,0 +1,36 @@
+Expected final count in every version below: 4000000
+
+Part 1: the race -- 8 threads, no synchronization, run 3 times
+  run 1: final count = <!-- MEASURED: will be less than 4000000, varies per run -->
+  run 2: final count = <!-- MEASURED: almost certainly different from run 1 -->
+  run 3: final count = <!-- MEASURED: almost certainly different from runs 1 and 2 -->
+  Verification: race_condition_reproduced = PASS
+  (PASS here means the bug was successfully demonstrated --
+  this is the one lesson in this course where PASS proves a
+  problem exists rather than proving correctness. see the lesson text.)
+  Verification: results_differ_across_runs = PASS
+
+Part 2: fixed with std::mutex
+  final count = 4000000
+  Verification: mutex_counter_correct = PASS
+
+Part 3: fixed with std::atomic, and how their costs compare
+  atomic final count = 4000000
+  Verification: atomic_counter_correct = PASS
+  mutex median time:  <!-- MEASURED --> ms
+  atomic median time: <!-- MEASURED --> ms
+  atomic is <!-- MEASURED -->x faster here for this simple increment
+
+Part 4: the same two ideas, on a GPU
+  atomicAdd() on a GPU is the same concept as std::atomic's fetch_add --
+  a hardware-guaranteed, uninterruptible read-modify-write. lesson 7.6's
+  reduction and the histogram kernel in the source pack both use it.
+  __syncthreads() is a different tool for a different problem -- not
+  protecting one shared value, but making every thread in a block wait
+  at the same point before any of them proceed. lesson 7.5's tiled
+  matmul kernel called it twice per tile iteration: once after loading
+  shared memory, so no thread reads a tile before every thread finished
+  writing it, and once after computing, so no thread overwrites the tile
+  for the next iteration while a slower thread is still reading it.
+
+Verification: all_checks = PASS

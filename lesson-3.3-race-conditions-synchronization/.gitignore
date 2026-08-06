@@ -1,0 +1,75 @@
+# Build
+build/
+cmake-build-*/
+out/
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dylib
+
+# CUDA / NVCC
+*.cubin
+*.fatbin
+*.ptx
+*.i
+*.ii
+*.gpu
+*.cudafe*
+*.module_id
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Istio / service mesh
+istio-*/
+istioctl
+*.istio.yaml
+istio-manifests/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+**/api_keys*
+**/secrets/
+
+# Docker
+docker-compose.override.yml
+
+# Logs / temp
+*.log
+tmp/
+temp/
+.cache/
