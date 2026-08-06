@@ -1,0 +1,24 @@
+Part 1: 4 real OS threads, each incrementing a shared counter 100000 times
+  shared_counter final value: 400000
+  expected: 400000
+  Verification: atomic_counter_correct = PASS
+  distinct OS thread IDs observed: 4 (expected 4)
+  Verification: distinct_thread_ids_observed = PASS
+
+Part 2: measuring real OS thread creation + join cost
+  spawned and joined 1000 threads, median total time: <!-- MEASURED --> us
+  average cost per thread: <!-- MEASURED --> us
+
+Part 3: why this number matters for what comes next
+  every one of those 1000 threads above involved the operating system:
+  a stack allocation, a scheduler registration, real kernel-level
+  bookkeeping. that's why it costs microseconds per thread, not
+  nanoseconds -- spawning a million OS threads this way would take
+  seconds, and nobody does that on a CPU for good reason.
+  a GPU kernel launched in Module 5 will routinely start a million
+  threads in one call. that only works because a GPU thread is not
+  an OS thread -- no separate stack allocation, no scheduler
+  negotiation, no kernel-level bookkeeping per thread. what a GPU
+  thread actually is gets built in Module 5, on top of this contrast.
+
+Verification: all_checks = PASS
