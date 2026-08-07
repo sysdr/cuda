@@ -1,0 +1,58 @@
+# Build artifacts
+build/
+cmake-build-*/
+out/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.exe
+*.out
+amdahls_law_demo
+
+# CMake / IDE
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python / Node junk (kept out even if introduced later)
+node_modules/
+venv/
+.venv/
+.env/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Istio / Kubernetes local leftovers
+istio-*/
+istioctl
+*.istio.yaml
+*.istio.yml
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets/
+api_keys.*
+
+# OS
+.DS_Store
+Thumbs.db

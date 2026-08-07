@@ -1,0 +1,25 @@
+Part 1: measuring the serial and parallel pieces separately
+  serial piece alone:    <!-- MEASURED --> ms (<!-- MEASURED -->% of baseline)
+  parallel piece alone:  <!-- MEASURED --> ms (<!-- MEASURED -->% of baseline)
+  baseline total (N=1):  <!-- MEASURED --> ms
+  measured parallel fraction P = <!-- MEASURED: expect roughly 0.85-0.95 -->
+
+Part 2: measured speedup vs Amdahl's predicted speedup
+N      measured (ms)    empirical speedup    predicted
+2      <!-- MEASURED --> <!-- MEASURED -->     <!-- MEASURED -->
+4      <!-- MEASURED --> <!-- MEASURED -->     <!-- MEASURED -->
+8      <!-- MEASURED --> <!-- MEASURED -->     <!-- MEASURED -->
+
+Part 3: the ceiling -- what infinite threads could never beat
+  theoretical max speedup as N -> infinity: <!-- MEASURED, e.g. ~10.0 --> x
+  best measured speedup here (N=8): <!-- MEASURED --> x
+  even with 8 threads, we're at <!-- MEASURED -->% of a ceiling we'll never fully reach
+
+Verification: empirical_speedup_within_predicted_bound = PASS
+Verification: speedup_increases_with_thread_count = PASS
+Verification: speedup_stays_below_theoretical_ceiling = PASS
+
+Part 4: the gap between measured and predicted has a name you already know
+  [explanatory text, not measured]
+
+Verification: all_checks = PASS
