@@ -1,0 +1,72 @@
+# Build
+build/
+cmake-build-*/
+out/
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.exe
+*.ptx
+*.cubin
+*.fatbin
+
+# CUDA / nvcc intermediates
+*.i
+*.ii
+*.gpu
+*.cubin
+*.module_id
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# Istio / k8s local clutter
+istio-*/
+istioctl
+*.istio.yaml.bak
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Secrets / credentials
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials.json
+serviceAccount*.json
+
+# Logs and temp
+*.log
+tmp/
+temp/
+.cache/

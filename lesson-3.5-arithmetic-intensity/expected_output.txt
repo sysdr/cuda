@@ -1,0 +1,32 @@
+Part 1: your GPU's real peak numbers
+  device: <!-- MEASURED --> (cc 8.6)
+  total cores:        <!-- MEASURED -->
+  clock:              <!-- MEASURED --> GHz
+  peak compute:       <!-- MEASURED --> GFLOP/s (assumes 2 FLOPs/cycle/core, FMA)
+  peak bandwidth:     <!-- MEASURED --> GB/s (theoretical, from clock and bus width)
+
+Part 2: the ridge point for your specific GPU
+  ridge point = peak compute / peak bandwidth = <!-- MEASURED --> FLOP/byte
+  below this arithmetic intensity: memory-bound (bandwidth is the limit)
+  above this arithmetic intensity: compute-bound (FLOPS is the limit)
+
+Part 3: arithmetic intensity of operations you've already built
+  vector add (lesson 7.1-style):     1 FLOP / 12 bytes = 0.0833 FLOP/byte
+  SAXPY (a*x + y):                    2 FLOP / 12 bytes = 0.1667 FLOP/byte
+  naive matmul (lesson 2.2/7.4-style), by size:
+    N=64     AI = 10.67 FLOP/byte
+    N=256    AI = 42.67 FLOP/byte
+    N=1024   AI = 170.67 FLOP/byte
+    N=4096   AI = 682.67 FLOP/byte
+
+Part 4: classifying against your ridge point (<!-- MEASURED --> FLOP/byte)
+  vector add: AI=0.0833 < ridge point -> memory-bound
+  SAXPY:      AI=0.1667 < ridge point -> memory-bound
+  naive matmul crosses from memory-bound to compute-bound at N ~= <!-- MEASURED -->
+  matmul at N=64:   AI=10.67 -> <!-- MEASURED: depends on ridge point -->
+  matmul at N=4096: AI=682.67 -> compute-bound
+
+Verification: ai_formulas_correct = PASS
+Verification: classification_matches_expected_pattern = PASS
+
+Verification: all_checks = PASS
