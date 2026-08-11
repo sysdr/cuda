@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+.env
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment and secrets
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# IDE and editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# CUDA / build artifacts
+*.o
+*.obj
+*.exe
+*.out
+*.app
+cmake-build-*/
+build/
+Build/
+
+# Docker
+.docker/
+
+# Istio
+*istio*
+istio/
+
+# Logs and temp files
+*.log
+tmp/
+temp/
+.cache/

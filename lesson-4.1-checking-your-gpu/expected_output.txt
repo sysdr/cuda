@@ -1,0 +1,22 @@
+=== Part 1: does nvidia-smi even run? ===
+  nvidia-smi found.
+Verification: nvidia_smi_available = PASS
+
+=== Part 2: what GPU and driver does nvidia-smi actually see? ===
+  <!-- MEASURED: e.g. "NVIDIA GeForce RTX 3050, 580.xx.xx, 6144 MiB" -->
+Verification: gpu_detected = PASS
+
+=== Part 3: is the driver new enough for CUDA 13.3? ===
+  driver <!-- MEASURED --> >= 580 -- meets the CUDA 13.3 floor
+Verification: driver_meets_cuda13_floor = PASS
+
+=== Part 4: does this GPU's architecture meet CUDA 13's hardware floor? ===
+  detected: <!-- MEASURED -->
+  compute capability (from lookup table, not queried): 8.6 (Ampere)
+Verification: architecture_meets_cuda13_floor = PASS
+
+=== Summary ===
+If Parts 1-3 all show PASS, and Part 4 shows PASS or a confirmed
+compute capability of 7.5 or higher from NVIDIA's own page, you're
+clear to continue to lesson 4.2 (driver-first install ordering) and
+lesson 4.4 (installing CUDA Toolkit 13.3).
