@@ -1,0 +1,18 @@
+=== What nvidia-smi's CUDA Version field actually means ===
+  nvidia-smi's banner reports a 'CUDA Version' even with zero toolkit
+  installed. That number describes driver capability, not an installed
+  toolkit -- lesson 4.4 installs the actual toolkit and lesson 4.6's
+  'nvcc --version' is what checks THAT number instead.
+
+  nvidia-smi reports: CUDA Version: <!-- MEASURED: e.g. 13.3 -->
+  this means: your driver can support CUDA Toolkit versions up to <!-- MEASURED -->
+Verification: cuda_version_field_found = PASS
+
+=== Is that headroom enough for CUDA Toolkit 13.3, this course's target? ===
+  <!-- MEASURED --> >= 13.3 -- your driver has enough headroom for this course's toolkit
+Verification: driver_supports_cuda_13_3 = PASS
+
+=== Summary: the rule this whole lesson boils down to ===
+  driver first. always. the toolkit installer does not reliably fix a
+  missing or outdated driver for you -- since CUDA 13.1, the Windows
+  installer doesn't even try. get a PASS here before lesson 4.4.
