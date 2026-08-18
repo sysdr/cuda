@@ -1,0 +1,64 @@
+# Dependencies / virtualenvs
+node_modules/
+venv/
+.venv/
+env/
+.env/
+.python-version
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+*.egg-info/
+dist/
+build/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.*
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.log
+
+# Istio / service mesh
+istio-*/
+istioctl
+*.istio.yaml
+istio-*.yaml
+
+# Build / CUDA artifacts
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+compile_commands.json

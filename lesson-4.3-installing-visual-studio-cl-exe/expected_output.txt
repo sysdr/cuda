@@ -1,0 +1,33 @@
+--- Ubuntu / WSL2 ---
+=== Does a host C++ compiler exist on this system? ===
+  found: <!-- MEASURED: e.g. g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0 -->
+Verification: host_compiler_found = PASS
+
+=== Is it new enough for CUDA 13.3's C++17 requirement? ===
+  g++ <!-- MEASURED --> >= 11 -- meets this course's minimum
+Verification: host_compiler_version_ok = PASS
+
+=== Summary ===
+  nvcc never compiles your host code itself (lesson 1.6) -- it hands
+  that half of every .cu file to exactly this compiler. On Ubuntu and
+  WSL2 that's almost always already sorted, which is one real advantage
+  of this course's primary platform over Windows native.
+
+--- Windows native ---
+=== Locating vswhere.exe (ships with Visual Studio 2022) ===
+  found: C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe
+Verification: visual_studio_found = PASS
+
+=== Does the install include the C++ build tools nvcc needs? ===
+  found C++ build tools at: <!-- MEASURED: e.g. C:\Program Files\Microsoft Visual Studio\2022\Community -->
+Verification: cpp_workload_installed = PASS
+
+=== Locating cl.exe itself under that install ===
+  found: <!-- MEASURED: e.g. ...\VC\Tools\MSVC\14.4x.xxxxx\bin\Hostx64\x64\cl.exe -->
+Verification: cl_exe_found = PASS
+
+=== Summary ===
+  nvcc never compiles your host code itself (lesson 1.6) -- it hands
+  that half of every .cu file to cl.exe, found above. You do NOT need
+  to ever open the Visual Studio IDE for this course -- CMake and nvcc
+  call cl.exe directly once it's installed.
