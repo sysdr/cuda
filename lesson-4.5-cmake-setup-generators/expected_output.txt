@@ -1,0 +1,19 @@
+Part 1: the same three-number check from lesson 4.4
+  nvcc compiled against:      <!-- MEASURED: expect 13.3, matches lesson 4.4 -->
+  driver actually supports:   <!-- MEASURED: should be >= 13.3 -->
+
+Part 2: reachability, same check as before
+  device 0: <!-- MEASURED --> (compute capability 8.6)
+Verification: gpu_reachable = PASS
+
+Part 3: what actually changed since lesson 4.4
+  the .cu file is identical. the compile command is not --
+  this binary was produced by cmake --build, not a raw nvcc
+  invocation. same compiler doing the same work underneath,
+  orchestrated differently. if you ran lesson 4.4's version
+  first, these numbers should match exactly.
+
+Verification: toolkit_is_13_3 = PASS
+Verification: driver_supports_this_runtime = PASS
+
+Verification: all_checks = PASS

@@ -1,0 +1,47 @@
+# Build artifacts
+cmake_build_demo
+cmake_build_demo.exe
+*.o
+*.out
+build/
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+dist/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Istio / Kubernetes
+*istio*
+*.istio.yaml
+*.istio.yml
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# CUDA / debug
+*.cubin
+*.ptx
+core
+core.*
