@@ -1,0 +1,30 @@
+Part 1: the same 4096 threads as lesson 5.1, reshaped into 2D
+  width x height:          64 x 64 = 4096 elements
+  block:                   (16, 16) = 256 threads
+  grid:                    (4, 4) = 16 blocks
+  total threads launched:  4096
+
+Part 2: launching with a 2D block and a 2D grid
+  launch configuration accepted, kernel finished executing
+
+Part 3: verifying the row-major flattening is correct
+  out[0]   = 0 (expected 0   -- row 0, col 0)
+  out[63]  = 63 (expected 63  -- row 0, col 63, last of row 0)
+  out[64]  = 64 (expected 64  -- row 1, col 0, first of row 1)
+  out[4095]= 4095 (expected 4095 -- row 63, col 63, last element)
+  Verification: row_major_flattening_correct = PASS
+
+Part 4: proving it's genuinely 2D, not 1D in disguise
+  (row=37, col=22) should flatten to index 2390
+  out[2390] = 2390
+  Verification: arbitrary_2d_position_correct = PASS
+
+Part 5: this is exactly what lesson 7.4 and 7.5's matmul kernels do
+  row = blockIdx.y * blockDim.y + threadIdx.y;
+  col = blockIdx.x * blockDim.x + threadIdx.x;
+  C[row * n + col] = ...
+  same two lines, same row-major flattening -- this lesson's kernel
+  and a real matmul kernel differ only in what they write, not in
+  how they figure out where to write it.
+
+Verification: all_checks = PASS
