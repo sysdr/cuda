@@ -1,0 +1,19 @@
+# Build output / CMake
+build/
+CMakeCache.txt
+CMakeFiles/
+
+# Node / Python
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Istio artifacts
+istio/
+istio-*/
+**/istio/
+**/istio-*/
+

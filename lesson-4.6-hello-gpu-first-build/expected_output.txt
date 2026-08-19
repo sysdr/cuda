@@ -1,0 +1,34 @@
+=======================================================
+  Hello from the host -- GPU Unboxed, lesson 4.6
+=======================================================
+
+Part 1: the GPU this whole course targets
+  device:               <!-- MEASURED: e.g. NVIDIA GeForce RTX 3050 -->
+  compute capability:   8.6
+  streaming multiprocessors: <!-- MEASURED -->
+  total memory:         <!-- MEASURED: approx 6.0 --> GB
+
+Part 2: the toolchain, all four lessons of it, at once
+  CUDA Toolkit (lesson 4.4):      13.3
+  driver headroom (lesson 4.2):   <!-- MEASURED: >= 13.3 -->
+  built via CMake (lesson 4.5):   yes -- this binary came from cmake --build
+
+Part 3: the whole checklist, in one place
+  Verification: gpu_reachable = PASS
+  Verification: toolkit_is_13_3 = PASS
+  Verification: driver_has_headroom = PASS
+  Verification: warp_size_is_32 = PASS
+
+=======================================================
+  environment_ready = PASS
+  every check since lesson 4.1 holds, all at once, right now.
+=======================================================
+
+Part 4: what this program deliberately did NOT do
+  no __global__ function. no <<<...>>> launch. that syntax
+  belongs to Module 5, starting with lesson 5.1 -- threads,
+  blocks, and grids. this lesson's job was making sure
+  nothing about your setup gets in the way when it happens.
+  it won't. Module 5 starts clean.
+
+Verification: environment_ready = PASS
