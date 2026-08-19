@@ -1,0 +1,17 @@
+Part 1: three numbers, all called "the CUDA version"
+  nvcc compiled against:      <!-- MEASURED: expect 13.3 --> 
+  driver actually supports:   <!-- MEASURED: should be >= 13.3 -->
+  (compare 'driver actually supports' against lesson 4.2's
+  nvidia-smi CUDA Version number -- they should match)
+
+Part 2: does the runtime library actually reach a GPU?
+  device 0: <!-- MEASURED: e.g. NVIDIA GeForce RTX 3050 --> (compute capability 8.6)
+Verification: gpu_reachable = PASS
+
+Part 3: is the installed toolkit actually 13.3, as this course targets?
+  Verification: toolkit_is_13_3 = PASS
+
+Part 4: does the driver have enough headroom for what nvcc just compiled?
+  Verification: driver_supports_this_runtime = PASS
+
+Verification: all_checks = PASS
