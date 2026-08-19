@@ -1,0 +1,23 @@
+Part 1: the launch configuration
+  n (elements needed):     4096
+  block size (threads):    256
+  grid size (blocks):      16
+  total threads launched:  4096
+  threads with nothing to do (boundary): 0
+
+Part 2: launching -- the first kernel this course has run
+  launch configuration accepted, kernel finished executing
+
+Part 3: verifying every one of the 4096 threads computed the right answer
+  out[0]    = 0 (expected 0)
+  out[255]  = 255 (expected 255 -- last thread of block 0)
+  out[256]  = 256 (expected 256 -- first thread of block 1)
+  out[4095] = 4095 (expected 4095 -- last element)
+  Verification: every_thread_wrote_its_own_index = PASS
+
+Part 4: what just happened, structurally
+  4096 threads ran. each one asked two questions -- which block
+  am I in (blockIdx.x), and where am I within that block
+  (threadIdx.x) -- and combined them into one global position.
+  no two threads computed the same i. that's the entire
+  hierarchy, doing real work, for the first time in this course.

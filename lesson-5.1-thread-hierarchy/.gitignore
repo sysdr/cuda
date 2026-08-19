@@ -1,0 +1,24 @@
+# Node.js
+node_modules/
+
+# Python
+venv/
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# Istio (common folder names)
+istio/
+Istio/
+istio-system/
+.istio/
+
+# CMake build outputs
+build/
+CMakeCache.txt
+CMakeFiles/
+compile_commands.json
+*.o
+*.obj
+thread_hierarchy_demo
+
