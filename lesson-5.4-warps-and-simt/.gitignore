@@ -1,0 +1,67 @@
+# Build output
+build/
+cmake-build-*/
+*.o
+*.a
+*.so
+*.exe
+warp_divergence_demo
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+*.egg-info/
+dist/
+*.egg
+venv/
+.venv/
+env/
+.env
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Secrets and local config
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Istio / Kubernetes
+istio-system/
+*istio*.yaml
+*istio*.yml
+
+# IDE and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# CUDA / compiler artifacts
+*.cubin
+*.fatbin
+*.ptx
+*.nvcc-tmp

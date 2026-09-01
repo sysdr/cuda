@@ -1,0 +1,34 @@
+Part 1: the warp, on your actual GPU
+  warpSize = 32
+  Verification: warp_size_is_32 = PASS
+
+  32 threads, one shared instruction stream. every thread in a
+  warp executes the SAME instruction at the SAME moment -- this
+  is what SIMT actually means, and it's true whether or not your
+  kernel's code ever mentions a warp explicitly.
+
+Part 2: same total iterations per thread, one version branches
+  non-divergent median: <!-- MEASURED --> ms
+  divergent median:     <!-- MEASURED --> ms
+  divergent / non-divergent ratio: <!-- MEASURED -->x
+
+Part 3: correctness -- divergence changes timing, never the answer
+  even thread (100): got <!-- MEASURED -->, expected <!-- MEASURED -->
+  odd thread (101):  got <!-- MEASURED -->, expected <!-- MEASURED -->
+  Verification: divergent_kernel_still_correct = PASS
+
+Part 4: what the timing difference actually proves
+  Verification: divergence_measurably_slower = PASS
+  each thread still does exactly 200 iterations of real work either
+  way -- the only difference is whether every thread in a warp took
+  the same branch. when they don't, the warp runs BOTH branches,
+  masking out whichever half isn't active for each one. that serial
+  replay is the entire cost -- not extra math, just extra passes.
+
+Part 5: why block sizes are usually multiples of 32
+  a block size that isn't a multiple of the warp size leaves the
+  last warp partially empty -- some lanes launched with nothing
+  valid to do, still costing a full warp's worth of scheduling.
+  this is a preview of occupancy tuning in module 10.
+
+Verification: all_checks = PASS
