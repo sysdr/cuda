@@ -1,0 +1,21 @@
+Part 1: the launch syntax has four positions, not two
+  kernel<<<grid, block>>>(...)                    -- shorthand
+  kernel<<<grid, block, 0, 0>>>(...)               -- fully explicit
+  the missing two default to 0 bytes of dynamic shared
+  memory and the default stream -- identical launches.
+
+  Verification: shorthand_equals_explicit_launch = PASS
+
+Part 2: the third argument -- dynamic shared memory, in bytes
+  block_size * sizeof(int) = 1024 bytes of shared memory requested
+  block 0: data[0]=255 data[255]=0 (expected 255, 0)
+  block 1: data[256]=511 data[511]=256 (expected 511, 256 -- reversal restarts per block)
+  Verification: per_block_reversal_correct = PASS
+
+Part 3: the fourth argument -- which stream to launch on
+  launched on an explicit, non-default stream instead of stream 0
+  Verification: explicit_stream_launch_correct = PASS
+  the actual benefit of streams -- overlapping work -- is Module 8's
+  subject. this is only the syntax slot they occupy in the launch.
+
+Verification: all_checks = PASS
